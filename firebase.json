@@ -1,0 +1,32 @@
+{
+  "functions": {
+    "source": "functions"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "emosense-ai-5b1f7",
+          "appId": "1:385296989352:android:a2b848663d8b3cba91169d",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "emosense-ai-5b1f7",
+          "configurations": {
+            "android": "1:385296989352:android:a2b848663d8b3cba91169d",
+            "ios": "1:385296989352:ios:a0f899dab32a338391169d",
+            "macos": "1:385296989352:ios:a0f899dab32a338391169d",
+            "web": "1:385296989352:web:5119b27f1ce3bd5391169d",
+            "windows": "1:385296989352:web:7699aa8a29c6e29591169d"
+          }
+        }
+      }
+    }
+  }
+}
