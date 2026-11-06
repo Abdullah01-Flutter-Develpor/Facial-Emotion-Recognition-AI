@@ -1,23 +1,23 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:demo_app/core/services/auth_service.dart';
-import 'package:demo_app/features/auth/auth_option_screen.dart';
-import 'package:demo_app/features/auth/forgot_password.dart';
-import 'package:demo_app/features/auth/sign_in_screen.dart';
-import 'package:demo_app/features/auth/sign_up_screen.dart';
-import 'package:demo_app/features/history/history_screen.dart';
-import 'package:demo_app/features/chat/emotion_chat_screen.dart';
-import 'package:demo_app/features/insight/insight_screen.dart';
-import 'package:demo_app/features/profile/widgets/about_screen.dart';
-import 'package:demo_app/features/profile/widgets/edit_profile.dart';
+import 'package:demo_app/features/auth/presentation/screens/auth_option_screen.dart';
+import 'package:demo_app/features/auth/presentation/screens/forgot_password.dart';
+import 'package:demo_app/features/auth/presentation/screens/sign_in_screen.dart';
+import 'package:demo_app/features/auth/presentation/screens/sign_up_screen.dart';
+import 'package:demo_app/features/history/presentation/screens/history_screen.dart';
+import 'package:demo_app/features/chat/presentation/screens/emotion_chat_screen.dart';
+import 'package:demo_app/features/insight/presentation/screens/insight_screen.dart';
+import 'package:demo_app/features/profile/presentation/screens/about_screen.dart';
+import 'package:demo_app/features/profile/presentation/screens/edit_profile.dart';
 import 'package:demo_app/ml/emotion_classifier.dart';
 import 'package:flutter/material.dart';
 
-import '../features/splash/splash_screen.dart';
-import '../features/onboarding/onboarding_screen.dart';
-import '../features/home/home_screen.dart';
-import '../features/emotion_scan/emotion_scan.dart';
-import '../features/emotion_result/emotion_result_screen.dart';
-import '../features/profile/settings_screen.dart';
+import 'package:demo_app/features/splash/presentation/screens/splash_screen.dart';
+import 'package:demo_app/features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:demo_app/features/home/presentation/screens/home_screen.dart';
+import 'package:demo_app/features/emotion_scan/presentation/screens/emotion_scan_screen.dart';
+import 'package:demo_app/features/emotion_result/presentation/screens/emotion_result_screen.dart';
+import 'package:demo_app/features/profile/presentation/screens/settings_screen.dart';
 
 import 'app_routes.dart';
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../core/state/analysis_scope.dart';
-import '../../features/emotion_result/models/emotion_analysis.dart';
-import '../emotion_result/analysis_detail_screen.dart';
+import 'package:demo_app/core/state/analysis_scope.dart';
+import 'package:demo_app/features/emotion_result/models/emotion_analysis.dart';
+import 'package:demo_app/features/emotion_result/presentation/screens/analysis_detail_screen.dart';
 
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({super.key});

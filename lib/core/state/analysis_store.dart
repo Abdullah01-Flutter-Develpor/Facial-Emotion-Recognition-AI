@@ -6,8 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../features/emotion_result/models/emotion_analysis.dart';
-import '../services/chat_history_store.dart';
+import 'package:demo_app/features/emotion_result/models/emotion_analysis.dart';
+import 'package:demo_app/core/services/chat_history_store.dart';
 
 class AnalysisStore extends ChangeNotifier {
   static const _legacyStorageKey = 'emotion_analyses_v1';

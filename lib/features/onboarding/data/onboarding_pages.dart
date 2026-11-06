@@ -1,4 +1,4 @@
-import '../models/onboarding_model.dart';
+import 'package:demo_app/features/onboarding/models/onboarding_model.dart';
 
 const onboardingPages = [
 

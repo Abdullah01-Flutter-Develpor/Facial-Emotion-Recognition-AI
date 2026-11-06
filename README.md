@@ -2,19 +2,30 @@
 
 EmoSense AI is a Flutter app for facial emotion analysis, with Firebase sign-in, saved analysis history, insights, and AI chat.
 
-## Project layout
+## Architecture
 
-- `lib/app/` — app routes and navigation
-- `lib/core/` — shared services, state, constants, and theme
-- `lib/features/` — feature screens and their widgets/models
-- `lib/ml/` — emotion classification integration
-- `assets/branding/` — app logo and launcher artwork
-- `assets/animation/` — Lottie animations
-- `assets/models/` — on-device ONNX model
-- `functions/` — Firebase Cloud Functions source
-- `android/`, `ios/`, `web/`, `windows/`, `linux/`, `macos/` — Flutter platform projects
+The app follows a feature-first MVVM structure. Each feature owns its presentation layer, while shared state, services, app navigation, and theme remain in dedicated shared folders.
 
-## Run or build for Android
+```text
+lib/
+├── app/                 # Routes and app navigation
+├── core/                # Shared constants, services, state, and theme
+├── features/            # Feature-owned code
+│   └── <feature>/
+│       ├── data/         # Feature data sources/content
+│       ├── models/       # Feature data models
+│       └── presentation/
+│           ├── screens/  # Screen widgets
+│           ├── viewmodels/ # UI state and presentation logic
+│           └── widgets/  # Feature-specific UI components
+├── ml/                  # On-device emotion classification
+└── main.dart             # App entry point
+
+assets/                  # Branding, animations, and model files
+functions/               # Firebase Cloud Functions
+```
+
+## Android
 
 ```powershell
 flutter pub get

@@ -1,6 +1,6 @@
 import 'package:image/image.dart' as img;
 
-import '../../emotion_result/models/emotion_analysis.dart';
+import 'package:demo_app/features/emotion_result/models/emotion_analysis.dart';
 
 /// Stable boundary between face preparation and the future TFLite model.
 /// No prediction is invented when a model is not bundled with the app.
