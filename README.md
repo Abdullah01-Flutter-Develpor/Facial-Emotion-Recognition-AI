@@ -26,6 +26,7 @@ Final Year Project · Department of Information Technology · The Islamia Univer
 
 - [About](#about)
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [How it works](#how-it-works)
 - [Architecture](#architecture)
 - [Tech stack](#tech-stack)
@@ -59,6 +60,16 @@ Results are saved to a private history synced with Cloud Firestore, summarised o
 | 📈 | **Insights** | Emotion distribution, 7-day activity, average confidence, camera vs gallery |
 | 💬 | **AI support chat** | Gemini-powered assistant, per result or general; offline fallback and Retry |
 | 🔐 | **Accounts** | Email/password and Google sign-in, password reset, profile editing, account deletion |
+
+## Screenshots
+
+<div align="center">
+
+| Home | History | Analysis detail | Insights | Profile |
+| :---: | :---: | :---: | :---: | :---: |
+| <img src="docs/screenshots/home.png" width="160" alt="Home screen" /> | <img src="docs/screenshots/history.png" width="160" alt="History screen" /> | <img src="docs/screenshots/analysis.png" width="160" alt="Analysis detail screen" /> | <img src="docs/screenshots/insights.png" width="160" alt="Insights screen" /> | <img src="docs/screenshots/profile.png" width="160" alt="Profile screen" /> |
+
+</div>
 
 ## How it works
 
@@ -189,7 +200,7 @@ lib/
 └── main.dart                 # Firebase, App Check, app start
 
 assets/                       # Branding, Lottie animations, emotion model
-docs/                         # Design diagrams
+docs/                         # Design diagrams and screenshots
 functions/                    # Firebase Cloud Functions (optional email OTP)
 firestore.rules               # Per-user security rules
 ```
