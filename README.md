@@ -201,7 +201,6 @@ lib/
 
 assets/                       # Branding, Lottie animations, emotion model
 docs/                         # Design diagrams and screenshots
-functions/                    # Firebase Cloud Functions (optional email OTP)
 firestore.rules               # Per-user security rules
 ```
 
