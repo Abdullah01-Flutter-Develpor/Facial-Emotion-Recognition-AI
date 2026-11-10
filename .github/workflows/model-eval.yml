@@ -1,0 +1,44 @@
+name: Model evaluation
+
+# Measures the bundled model on the FER-2013 PrivateTest split using the
+# same preprocessing as the app. Run it from the Actions tab.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - assets/models/emotion_model.onnx
+      - tools/evaluate_model.py
+      - .github/workflows/model-eval.yml
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install onnxruntime numpy pillow matplotlib
+
+      - name: Download FER-2013
+        run: |
+          mkdir -p data
+          curl -sSL -o data/icml_face_data.csv \
+            https://huggingface.co/datasets/JimmyUnleashed/FER-2013/resolve/main/icml_face_data.csv
+          # Same checksum torchvision uses for the official file.
+          echo "b114b9e04e6949e5fe8b6a98b3892b1d  data/icml_face_data.csv" | md5sum -c -
+
+      - name: Evaluate
+        run: |
+          python tools/evaluate_model.py --csv data/icml_face_data.csv --usage PrivateTest --out evaluation_results
+          cat evaluation_results/report.md >> "$GITHUB_STEP_SUMMARY"
+          cat evaluation_results/report.md
+          cat evaluation_results/confusion_matrix.csv
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: evaluation-results
+          path: evaluation_results/
