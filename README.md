@@ -15,8 +15,12 @@ Photos never leave the phone.
 ![ONNX Runtime](https://img.shields.io/badge/ONNX%20Runtime-ResNet--18-005CED?logo=onnx&logoColor=white)
 ![ML Kit](https://img.shields.io/badge/Google%20ML%20Kit-Face%20Detection-4285F4?logo=google&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Android%207.0%2B-3DDC84?logo=android&logoColor=white)
+[![CI](https://github.com/Abdullah01-Flutter-Develpor/Facial-Emotion-Recognition-AI/actions/workflows/ci.yml/badge.svg)](https://github.com/Abdullah01-Flutter-Develpor/Facial-Emotion-Recognition-AI/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Final Year Project · Department of Information Technology · The Islamia University of Bahawalpur
+
+**[⬇ Download the APK](https://github.com/Abdullah01-Flutter-Develpor/Facial-Emotion-Recognition-AI/releases/latest)**
 
 </div>
 
@@ -31,6 +35,7 @@ Final Year Project · Department of Information Technology · The Islamia Univer
 - [Architecture](#architecture)
 - [Tech stack](#tech-stack)
 - [AI model](#ai-model)
+- [Model evaluation](#model-evaluation)
 - [Project structure](#project-structure)
 - [Getting started](#getting-started)
 - [Privacy and security](#privacy-and-security)
@@ -174,6 +179,26 @@ flowchart TD
 | Output | 7 classes: angry, disgust, fear, happy, neutral, sad, surprise |
 | Training data | [FER-2013](https://arxiv.org/abs/1307.0414) (35,887 grayscale 48 × 48 faces) |
 | Inference | about 9 ms per pass on a desktop CPU; 2 passes per scan |
+| Test accuracy | **64.2%** on the FER-2013 PrivateTest split (3,589 images) |
+
+## Model evaluation
+
+The bundled model was evaluated on the full FER-2013 PrivateTest split with exactly the preprocessing the app uses (grayscale, 48 × 48, 112 × 112, ImageNet normalisation, original + mirror image averaged). The [Model evaluation](.github/workflows/model-eval.yml) workflow reproduces it from the Actions tab, and [`tools/evaluate_model.py`](tools/evaluate_model.py) runs it locally.
+
+| Class | Precision | Recall | F1 | Test images |
+| --- | --- | --- | --- | --- |
+| Angry | 0.623 | 0.509 | 0.561 | 491 |
+| Disgust | 0.711 | 0.582 | 0.640 | 55 |
+| Fear | 0.524 | 0.400 | 0.453 | 528 |
+| Happy | 0.752 | 0.943 | 0.837 | 879 |
+| Neutral | 0.598 | 0.663 | 0.629 | 626 |
+| Sad | 0.482 | 0.517 | 0.499 | 594 |
+| Surprise | 0.844 | 0.623 | 0.716 | 416 |
+| **Overall** | | | **macro F1 0.619** | **accuracy 64.2%** |
+
+<p align="center"><img src="docs/evaluation/confusion_matrix.png" alt="Confusion matrix on FER-2013 PrivateTest" width="520" /></p>
+
+Happy and surprise are recognised most reliably. Fear, sad and angry are the hardest and are most often confused with each other and with neutral, a pattern commonly reported on FER-2013, where human accuracy is estimated at about 65% ± 5%.
 
 ## Project structure
 
@@ -200,7 +225,10 @@ lib/
 └── main.dart                 # Firebase, App Check, app start
 
 assets/                       # Branding, Lottie animations, emotion model
-docs/                         # Design diagrams and screenshots
+docs/                         # SRS, SDD, diagrams, screenshots, evaluation
+test/                         # Unit tests
+tools/evaluate_model.py       # FER-2013 accuracy and confusion matrix
+.github/workflows/            # CI (analyze + test) and model evaluation
 firestore.rules               # Per-user security rules
 ```
 
@@ -212,7 +240,11 @@ firestore.rules               # Per-user security rules
 - An Android phone running **Android 7.0** or newer
 - A Firebase project with Authentication (Email/Password and Google), Cloud Firestore, App Check and AI Logic enabled
 
-### Run
+### Install on a phone
+
+Download `app-release.apk` from the [latest release](https://github.com/Abdullah01-Flutter-Develpor/Facial-Emotion-Recognition-AI/releases/latest), open it on your Android phone and allow installing from this source.
+
+### Run from source
 
 ```powershell
 git clone https://github.com/Abdullah01-Flutter-Develpor/Facial-Emotion-Recognition-AI.git
@@ -220,6 +252,15 @@ cd Facial-Emotion-Recognition-AI
 flutter pub get
 flutter run
 ```
+
+### Test
+
+```powershell
+flutter analyze
+flutter test
+```
+
+Both run automatically on every push through GitHub Actions.
 
 ### Build a release APK
 
@@ -258,6 +299,10 @@ firebase deploy --only firestore:rules
 - Results for every face in a group photo
 - Training on larger datasets such as AffectNet and RAF-DB
 - Confidence calibration, history export (PDF/CSV) and Urdu localisation
+
+## License
+
+Released under the [MIT License](LICENSE).
 
 ## Author
 
