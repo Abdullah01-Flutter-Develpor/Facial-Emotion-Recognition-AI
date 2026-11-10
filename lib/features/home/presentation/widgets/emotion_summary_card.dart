@@ -41,7 +41,7 @@ class EmotionSummaryCard extends StatelessWidget {
           const SizedBox(height: 20),
           if (latest == null)
             Text(
-              'No result yet. Add the emotion model to begin saving private, on-device analyses.',
+              'No result yet. Run your first emotion scan to see it here.',
               style: GoogleFonts.poppins(
                 color: Colors.white60,
                 fontSize: 13,

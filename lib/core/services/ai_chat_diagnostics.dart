@@ -13,7 +13,7 @@ class AiChatDiagnostics {
       entries.add({
         'at': DateTime.now().toIso8601String(),
         'event': event,
-        if (detail != null) 'detail': detail,
+        'detail': ?detail,
       });
       if (entries.length > 100) entries.removeRange(0, entries.length - 100);
       await preferences.setString(_key, jsonEncode(entries));
