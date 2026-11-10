@@ -1,5 +1,5 @@
 name: demo_app
-description: "A new Flutter project."
+description: "EmoSense AI: on-device facial emotion recognition with Flutter, ML Kit and ONNX Runtime."
 
 publish_to: 'none'
 

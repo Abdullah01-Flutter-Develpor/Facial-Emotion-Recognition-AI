@@ -250,8 +250,8 @@ firebase deploy --only firestore:rules
 
 | Document | Description |
 | --- | --- |
-| [Software Requirements Specification](Abdullah%20SRS.docx) | Functional and non-functional requirements, use cases |
-| [Software Design Document](Abdullah%20SDD.docx) | Architecture, data model, UI and design diagrams |
+| [Software Requirements Specification](docs/SRS.docx) | Functional and non-functional requirements, use cases |
+| [Software Design Document](docs/SDD.docx) | Architecture, data model, UI and design diagrams |
 
 ## Future work
 
